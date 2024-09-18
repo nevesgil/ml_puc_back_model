@@ -36,7 +36,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import GridSearchCV
 
-filepath = './train.csv'
+filepath = "https://raw.githubusercontent.com/nevesgil/ml_puc_back_model/main/train.csv"
 df = pd.read_csv(filepath)
 df.head()
 
