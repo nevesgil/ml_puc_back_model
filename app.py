@@ -5,6 +5,10 @@ import pickle
 import sqlite3
 import os
 
+
+st.logo(image="tryimg.png", link=None, icon_image=None)
+
+
 # Mappings for input conversion
 home_planet_mapping = {'Earth': 1, 'Europa': 2, 'Mars': 3}
 destination_mapping = {'TRAPPIST-1e': 1, 'PSO J318.5-22': 2, '55 Cancri e': 3}
@@ -93,7 +97,7 @@ def prediction_page():
 
 # Function to style the dataframe with color formatting
 def color_transport(val):
-    color = 'green' if val == "Transported" else 'orange'
+    color = 'orange' if val == "Transported" else 'green'
     return f'color: {color}'
 
 # Function to display the history of predictions
