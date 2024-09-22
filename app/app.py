@@ -2,9 +2,10 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
-import sqlite3
 import os
+from database.database import PredictionDB
 
+db = PredictionDB()
 
 # Mappings for input conversion
 home_planet_mapping = {'Earth': 1, 'Europa': 2, 'Mars': 3}
@@ -16,49 +17,6 @@ model_path = os.path.join(os.path.dirname(__file__), '../ml_model/spaceship_pipe
 with open(model_path, 'rb') as file:
     model = pickle.load(file)
 
-# Function to create a connection to the SQLite database
-def create_connection():
-    conn = sqlite3.connect('predictions.db')  # This will create the DB file if it doesn't exist
-    return conn
-
-# Function to create the predictions table (if it doesn't exist)
-def create_table():
-    conn = create_connection()
-    cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS predictions (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            home_planet TEXT,
-            cryo_sleep TEXT,
-            destination TEXT,
-            age INTEGER,
-            vip TEXT,
-            total_spend REAL,
-            transported TEXT
-        )
-    ''')
-    conn.commit()
-    conn.close()
-
-# Function to insert a prediction into the database
-def insert_prediction(home_planet, cryo_sleep, destination, age, vip, total_spend, transported):
-    conn = create_connection()
-    cursor = conn.cursor()
-    cursor.execute('''
-        INSERT INTO predictions (home_planet, cryo_sleep, destination, age, vip, total_spend, transported)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    ''', (home_planet, cryo_sleep, destination, age, vip, total_spend, transported))
-    conn.commit()
-    conn.close()
-
-# Function to fetch all predictions from the database
-def fetch_predictions():
-    conn = create_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM predictions')
-    predictions = cursor.fetchall()
-    conn.close()
-    return predictions
 
 # Function to display the prediction page
 def prediction_page():
@@ -90,7 +48,7 @@ def prediction_page():
         st.success(f"Prediction result: {prediction_label}")
         
         # Insert prediction into the database
-        insert_prediction(home_planet, cryo_sleep, destination, age, vip, total_spend, prediction_label)
+        db.insert_prediction(home_planet, cryo_sleep, destination, age, vip, total_spend, prediction_label)
 
 # Function to style the dataframe with color formatting
 def color_transport(val):
@@ -100,7 +58,7 @@ def color_transport(val):
 # Function to display the history of predictions
 def display_history():
     st.subheader("Check the status of each entry.")
-    predictions = fetch_predictions()
+    predictions = db.fetch_predictions()
 
     if predictions:
         # Convert fetched data into a pandas DataFrame
@@ -116,7 +74,7 @@ def display_history():
         st.write("No predictions made yet.")
 
 # Main app layout
-create_table()  # Ensure the database and table are created
+db.create_table()  # Ensure the database and table are created
 
 prediction_page()
 st.markdown("---")  # Divider line
