@@ -12,7 +12,7 @@ destination_mapping = {'TRAPPIST-1e': 1, 'PSO J318.5-22': 2, '55 Cancri e': 3}
 
 # Load your trained model (ensure the path is correct)
 # Load the trained model
-model_path = os.path.join(os.path.dirname(__file__), 'ml_model/spaceship_pipeline.pkl')
+model_path = os.path.join(os.path.dirname(__file__), '../ml_model/spaceship_pipeline.pkl')
 with open(model_path, 'rb') as file:
     model = pickle.load(file)
 
