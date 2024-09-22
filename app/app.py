@@ -6,7 +6,9 @@ from utils.spaceship_app import SpaceshipApp
 
 # Initialize the database and the model
 db = PredictionDB()
-model_path = os.path.join(os.path.dirname(__file__), '../ml_model/spaceship_pipeline.pkl')
+model_path = os.path.join(
+    os.path.dirname(__file__), "../ml_model/spaceship_pipeline.pkl"
+)
 model = SpaceshipModel(model_path)
 
 # Create the Streamlit app

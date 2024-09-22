@@ -1,7 +1,8 @@
 import sqlite3
 
+
 class PredictionDB:
-    def __init__(self, db_file='predictions.db'):
+    def __init__(self, db_file="predictions.db"):
         """Initialize the class with the database file."""
         self.db_file = db_file
         self.create_table()  # Ensure the table is created when the object is initialized
@@ -14,7 +15,8 @@ class PredictionDB:
         """Create the predictions table if it doesn't exist."""
         conn = self.create_connection()
         cursor = conn.cursor()
-        cursor.execute('''
+        cursor.execute(
+            """
             CREATE TABLE IF NOT EXISTS predictions (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 home_planet TEXT,
@@ -25,18 +27,24 @@ class PredictionDB:
                 total_spend REAL,
                 transported TEXT
             )
-        ''')
+        """
+        )
         conn.commit()
         conn.close()
 
-    def insert_prediction(self, home_planet, cryo_sleep, destination, age, vip, total_spend, transported):
+    def insert_prediction(
+        self, home_planet, cryo_sleep, destination, age, vip, total_spend, transported
+    ):
         """Insert a prediction into the database."""
         conn = self.create_connection()
         cursor = conn.cursor()
-        cursor.execute('''
+        cursor.execute(
+            """
             INSERT INTO predictions (home_planet, cryo_sleep, destination, age, vip, total_spend, transported)
             VALUES (?, ?, ?, ?, ?, ?, ?)
-        ''', (home_planet, cryo_sleep, destination, age, vip, total_spend, transported))
+        """,
+            (home_planet, cryo_sleep, destination, age, vip, total_spend, transported),
+        )
         conn.commit()
         conn.close()
 
@@ -44,7 +52,7 @@ class PredictionDB:
         """Fetch all predictions from the database."""
         conn = self.create_connection()
         cursor = conn.cursor()
-        cursor.execute('SELECT * FROM predictions')
+        cursor.execute("SELECT * FROM predictions")
         predictions = cursor.fetchall()
         conn.close()
         return predictions
