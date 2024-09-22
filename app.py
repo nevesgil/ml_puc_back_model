@@ -6,9 +6,6 @@ import sqlite3
 import os
 
 
-st.logo(image="tryimg.png", link=None, icon_image=None)
-
-
 # Mappings for input conversion
 home_planet_mapping = {'Earth': 1, 'Europa': 2, 'Mars': 3}
 destination_mapping = {'TRAPPIST-1e': 1, 'PSO J318.5-22': 2, '55 Cancri e': 3}
