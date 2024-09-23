@@ -35,3 +35,4 @@ And the database is SQLite (https://www.sqlite.org/).
 ### Architecture
 
 ![app_arch](/images/app_arch.png)
+
