@@ -5,6 +5,7 @@ Gilmar Neves
 - [Introduction](#introduction)
 - [Tech and Tools](#techandtools)
     - [Architecture](#architecture)
+    - [Test](#test)
 - [Installation](#installation)
 - [Use](#use)
 
@@ -30,11 +31,23 @@ The results were also submitted for Kaggle evaluation achieving 74% of accuracy.
 The project was solely developed in Python as a whole.
 For the ML development, the librabry scikit-learn (https://scikit-learn.org/stable/) was the choice.
 The user interface was created using Streamlit (https://streamlit.io/).
-And the database is SQLite (https://www.sqlite.org/).
+The library pytest (https://pytest.org/en/stable/) was used for testing the model before using it in the app.
+And the database is SQLite (https://www.sqlite.org/). 
 
 ### Architecture
 
 ![app_arch](/images/app_arch.png)
+
+
+### Test
+
+The test code can be found on ./app/test_model.py.
+
+obs: If you wish to test the model before running the app, simply type ```pystest``` on the terminal.
+
+The result is as follows:
+
+![app_test](/images/app_test.png)
 
 
 ## Installation
@@ -42,7 +55,7 @@ To start using the app on your machine, follow the steps:
 
 1. **Clone the repo**
    ```sh
-   https://github.com/nevesgil/ml_puc_back_model.git
+   git clone https://github.com/nevesgil/ml_puc_back_model.git
 
 2. **Access the folder**
    ```sh
@@ -54,7 +67,7 @@ To start using the app on your machine, follow the steps:
 
 Obs: By the end of the use, please use ```docker-compose down``` on the terminal.
 
-The image, dependencies and whatever needed is already set.
+The image, dependencies and whatever needed are already set.
 
 After this, you may access the app on port 8501.
 
