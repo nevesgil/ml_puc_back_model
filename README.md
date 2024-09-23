@@ -36,3 +36,39 @@ And the database is SQLite (https://www.sqlite.org/).
 
 ![app_arch](/images/app_arch.png)
 
+
+## Installation
+To start using the app on your machine, follow the steps:
+
+1. **Clone the repo**
+   ```sh
+   https://github.com/nevesgil/ml_puc_back_model.git
+
+2. **Access the folder**
+   ```sh
+   cd ml_puc_back_model
+
+3. **Build and start the Docker container**
+   ```
+   docker-compose up --build
+
+Obs: By the end of the use, please use ```docker-compose down``` on the terminal.
+
+The image, dependencies and whatever needed is already set.
+
+After this, you may access the app on port 8501.
+
+
+## Use
+
+1. **Make predictions:**
+
+The user may simply input the data in each form entry and click on the PREDICT buttom to get an answer rightaway.
+
+![app_form](/images/app_form.png)
+
+2. **Check previous predictions:**
+
+Scrolling a bit down on the app, the user may see all the history of previous predictions.
+
+![app_history](/images/app_history.png)
