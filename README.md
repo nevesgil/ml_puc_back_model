@@ -12,7 +12,7 @@ Gilmar Neves
 
 ## Introduction
 
-Spaceship Titanic is a learning dataset from Kaggle, inspired by the famous Titanic problem and designed to help machine learning enthusiasts develop their first projects.
+Spaceship Titanic is a learning dataset from Kaggle, inspired by the famous Titanic problem and designed to help machine learning enthusiasts develop their first projects (https://www.kaggle.com/competitions/spaceship-titanic).
 
 It features a synthetic dataset of passengers, complete with various attributes, and can be used to predict whether or not these passengers were transported to another dimension following the spaceship collision with a space-time anomaly.
 
