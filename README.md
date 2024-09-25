@@ -19,7 +19,7 @@ It features a synthetic dataset of passengers, complete with various attributes,
 This project aimed the creation of a ML model for predicting wether or not a passanger was transported based on some of the features available from each person.
 Moreover, an ML app was developed for creating an interface to use such model with any user input.
 
-The processing of EDA and ML model creating can be found in a notebook in the root folder in this project. It leads to a IPYNB file (ml_puc_mvp.ipynb) that can be visualized in tools like Jupyter and Google Colab.
+The processing of EDA and ML model creating can be found in a notebook in the notebooks folder in this project. It leads to a IPYNB file (ml_puc_mvp.ipynb) that can be visualized in tools like Jupyter and Google Colab.
 
 The chosen model was
 **SVM using {'C': 10, 'gamma': 'scale', 'kernel': 'rbf'}**
